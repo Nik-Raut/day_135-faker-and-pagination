@@ -1,0 +1,23 @@
+{% extends 'Page_App/base.html' %}
+{% load crispy_forms_tags %}
+
+ {% block block1 %}
+    <title>Product Form</title>
+    {% endblock %}
+
+
+
+ {% block block2 %}
+
+<div class="container" style="width:50%">
+
+    <h1>Registration Form</h1>
+<form method="post" class="jumbotron" >
+
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" value="Register" class="btn btn-info" >
+</form>
+    </div>
+
+ {% endblock %}

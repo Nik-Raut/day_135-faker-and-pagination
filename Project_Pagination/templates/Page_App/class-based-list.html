@@ -1,0 +1,57 @@
+{% extends 'Page_App/base.html' %}
+{% load crispy_forms_tags %}
+
+ {% block block1 %}
+    <title>People Pagination List </title>
+    {% endblock %}
+
+
+
+
+ {% block block2 %}
+<h1 style="text-align:center">Class Based People Pagination List</h1>
+<table class="table table-bordered table-dark">
+ <tr>
+        <th>Person ID</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Address</th>
+
+    </tr>
+    {% for people in people %}
+    <tr>
+
+         <td>{{people.id}}</td>
+         <td>{{people.name}}</td>
+         <td>{{people.country}}</td>
+         <td>{{people.address}}</td>
+
+         <td><a href="{% url 'update' people.id %}"><button class="btn btn-primary">Update</button></a></td>
+         <td><a href="{% url 'delete' people.id %}"><button class="btn btn-danger">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; First</a>&nbsp;&nbsp;
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>&nbsp;&nbsp;
+        {% endif %}
+
+        <span class="current">
+            |Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}|
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;&nbsp;
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>&nbsp;&nbsp;
+        {% endif %}
+    </span>
+</div>
+
+<h2 style="text-align:right"><a href="{% url 'submitform' %}"><button class="btn btn-success">Add Person</button></a></h2>
+<h2 style="text-align:center"><a href="{% url 'base' %}"><button class="btn btn-dark">Home</button></a></h2>
+
+{% endblock %}

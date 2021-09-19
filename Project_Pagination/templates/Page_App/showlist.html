@@ -1,0 +1,51 @@
+{% extends 'Page_App/base.html' %}
+{% load crispy_forms_tags %}
+
+ {% block block1 %}
+    <title>Laptop List</title>
+    {% endblock %}
+
+{% block block2 %}
+<h1 style="text-align:center">People List</h1>
+<table class="table table-bordered table-dark">
+
+    <tr>
+        <th>Person ID</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Address</th>
+
+    </tr>
+    {% for people in all_people %}
+    <tr>
+
+         <td>{{people.id}}</td>
+         <td>{{people.name}}</td>
+         <td>{{people.country}}</td>
+         <td>{{people.address}}</td>
+
+         <td><a href="{% url 'update' people.id %}"><button class="btn btn-primary">Update</button></a></td>
+         <td><a href="{% url 'delete' people.id %}"><button class="btn btn-danger">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+
+<h3><a href="{% url 'submitform' %}">Add People</a></h3><br><br>
+<br>
+<h3><a href="{% url 'base' %}">Home</a></h3>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

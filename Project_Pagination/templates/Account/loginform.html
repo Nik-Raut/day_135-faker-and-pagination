@@ -1,0 +1,37 @@
+{% extends 'Page_App/base.html' %}
+{% load crispy_forms_tags %}
+
+ {% block block1 %}
+    <title>Login Form</title>
+    {% endblock %}
+
+
+
+ {% block block2 %}
+
+<div class="container" style="width:50%">
+
+    <h1>Login Form</h1>
+<form method="post" class="jumbotron" style="width:50%" align="center">
+
+   {% csrf_token %}
+  Username:<input type="text" name="u" class="form-control">   <br><br>
+  Password:<input type="password" name="p" class="form-control"> <br><br>
+
+    {% if messages %}
+            {% for msg in messages %}
+            {{ msg }}
+            {% endfor %}
+    {% endif %}
+
+    <input type="submit" value="Login" class="btn btn-info" ><br><br><br>
+
+
+
+
+
+
+</form>
+    </div>
+
+ {% endblock %}
